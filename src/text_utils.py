@@ -4,14 +4,17 @@ text_utils.py
 문자열 유틸리티 함수 모음
 
 사용 예시:
-    from text_utils import validate_length
+from text_utils import validate_length
 
     validate_length("hello", min_length=3)  # True
     validate_length("hi", min_length=3)     # False
 """
 
-
-def validate_length(text: str, min_length: int = 0, max_length: int | None = None) -> bool:
+def validate_length(
+    text: str,
+    min_length: int = 0,
+    max_length: int | None = None
+) -> bool:
     """
     문자열 길이가 지정된 범위 내에 있는지 검증합니다.
 
@@ -22,7 +25,16 @@ def validate_length(text: str, min_length: int = 0, max_length: int | None = Non
 
     Returns:
         bool: 길이 조건을 만족하면 True, 아니면 False
+
+    Raises:
+        ValueError: min_length 또는 max_length가 0보다 작은 경우
     """
+    if min_length < 0:
+        raise ValueError("min_length는 0 이상이어야 합니다.")
+
+    if max_length is not None and max_length < 0:
+        raise ValueError("max_length는 0 이상이어야 합니다.")
+
     length = len(text)
 
     if length < min_length:
