@@ -1,22 +1,12 @@
-
-def to_uppercase(text):
+def normalize_whitespace(text: str) -> str:
     """
-    Convert the given string to uppercase.
+    Normalize whitespace in the given string.
 
     Example:
-        to_uppercase("hello") -> "HELLO"
+        normalize_whitespace("  hello   world  ") -> "hello world"
     """
-    return text.upper()
+    return " ".join(text.split())
 
-
-def to_lowercase(text):
-    """
-    Convert the given string to lowercase.
-
-    Example:
-        to_lowercase("HELLO") -> "hello"
-    """
-    return text.lower()
 
 def to_uppercase(text: str) -> str:
     """
