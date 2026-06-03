@@ -14,21 +14,39 @@
 * `validate_length()` 함수에 음수 길이 검증 로직을 추가하는 과정에서 잘못된 조건 처리가 포함된 커밋을 생성하였다.
 * 해당 커밋이 원격 저장소에 push된 이후 오류를 발견하였다.
 * 이미 공유된 커밋이므로 `git reset` 대신 `git revert`를 사용하여 변경 사항을 취소하였다.
+## 실수로 커밋한 코드
+```python
+if min_length < 0:
+    return False
+```
 
+## 정상 코드 (수정본)
+```python
+if min_length < 0:
+    raise ValueError("min_length는 0 이상이어야 합니다.")
+```
 ### 수행 명령 또는 절차
 
 ```bash
 git log --oneline
+9cfeacf (origin/main, origin/docs/26, origin/HEAD,
+14ab263 (origin/feat/19) Merge branch
+'main' into
+main) Merge pull request #23 from
+codyssey-git/feat/19
+feat/19
+05db6e7 Merge pull request #18 from codyssey-git/feat/15
+2697723 (origin/feat/15, feat/15) Merge branch
+'main' into feat/15
 
-git revert <commit-hash>
+git revert 9cfeacf
 
 git log --oneline
-```
 
-예시:
-
-```bash
-git revert a1b2c3d
+vnkers948441@c6r6s5 B2-2 % git log --oneline
+Idf150c Revert "Merge pull request #23 from codyssey-git/feat/19'
+434dd75 refactor: 문자열 업데이트
+9cfeacf (origin/main, origin/docs/26, origin/HEAD, main) Merge pull request #23 from codyssey-git/feat/19
 ```
 
 ### 결과
