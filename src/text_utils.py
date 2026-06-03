@@ -30,7 +30,7 @@ def validate_length(
         ValueError: min_length 또는 max_length가 0보다 작은 경우
     """
     if min_length < 0:
-        raise ValueError("min_length는 0 이상이어야 합니다.")
+        return True
 
     if max_length is not None and max_length < 0:
         raise ValueError("max_length는 0 이상이어야 합니다.")
