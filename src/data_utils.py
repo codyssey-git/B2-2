@@ -1,7 +1,7 @@
-"""데이터 처리를 위한 유틸리티 함수 모음입니다."""
+"""데이터 처리를 위한 공통 유틸리티 함수 모음입니다."""
 
 
-def calculate_average(numbers):
+def calculate_average(numbers: list[int | float]) -> float:
     """숫자 리스트의 평균을 계산합니다.
 
     Args:
