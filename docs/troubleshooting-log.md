@@ -61,7 +61,7 @@ git push --force-with-lease origin docs/31
 * 해당 커밋이 원격 저장소에 push된 이후 오류를 발견했습니다.
 * 이미 공유된 커밋이므로 `git reset` 대신 `git revert`를 사용하여 변경 사항을 취소했습니다.
 
-### 수행 명령 또는 
+### 수행 명령 또는 절차
 ```
 git log --oneline
 
@@ -87,6 +87,52 @@ git revert a1b2c3d
 * 이미 원격 저장소에 공유된 커밋은 `git reset`보다 `git revert`를 사용하는 것이 안전합니다.
 * `git revert`는 기존 커밋을 삭제하지 않고 취소 이력을 남기므로 협업 환경에 적합합니다.
 * 커밋을 되돌려야 하는 상황에서도 Git 히스토리를 보존할 수 있습니다.
+
+----
+
+### 시나리오: git revert 1 - 윤대영
+
+- 종류: `git revert`
+- 참여자: 윤대영
+
+### 상황
+
+- Git 트러블슈팅 실습 중 `docs/conflict-resolution.md` 파일에 이름을 추가하고 커밋했다.
+- 커밋 후 현재 브랜치가 해당 작업을 진행해야 하는 브랜치가 아니라는 것을 확인했다.
+- 이미 커밋이 생성된 상태였기 때문에, 커밋 기록을 삭제하지 않고 변경사항만 되돌리기 위해 `git revert`를 사용했다.
+
+### 수행 명령 또는 절차
+
+```bash
+git add docs/conflict-resolution.md
+
+git commit -m "docs: 충돌 해결 문서에 이름 추가"
+
+git log --oneline
+
+git revert 185b6fd
+```
+
+### 결과
+
+- `docs/conflict-resolution.md`에 잘못 추가했던 이름이 제거되었다.
+- 기존 커밋 `185b6fd`는 삭제되지 않고 유지되었다.
+- 해당 커밋의 변경사항을 취소하는 새로운 revert 커밋이 생성되었다.
+
+#### revert 이전
+
+![revert 이전](../images/trouble-shooting/revert%20이전_윤대영.png)
+
+#### revert 이후
+
+![revert 이후](../images/trouble-shooting/revert%20이후_윤대영.png)
+
+### 배운 점
+
+- 이미 커밋한 변경사항은 `git revert`를 사용해 안전하게 되돌릴 수 있다.
+- `git revert`는 기존 커밋을 삭제하는 것이 아니라, 반대 변경사항을 담은 새 커밋을 만든다.
+- 협업 중 공유될 수 있는 커밋은 `reset`으로 기록을 지우기보다 `revert`로 되돌리는 것이 더 안전하다.
+- 작업 전 현재 브랜치를 확인하는 습관이 중요하다.
 
 ---
 
@@ -130,6 +176,8 @@ git stash pop
 * `git stash`는 기본적으로 추적 중인 파일의 변경 사항만 저장합니다.
 * 새로 생성된 untracked 파일까지 함께 저장하려면 `git stash -u`를 사용해야 합니다.
 * `git stash pop` 이후 충돌이 발생할 수 있으므로 반드시 `git status`로 상태를 확인해야 합니다.
+
+---
 
 ### 시나리오: git reset --soft HEAD~1
 
