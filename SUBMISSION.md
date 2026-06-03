@@ -43,8 +43,7 @@
 - CODEOWNERS 추가 Issue: #33
 - CODEOWNERS 추가 PR: #34
 - CODEOWNERS 파일: `.github/CODEOWNERS`
-- 자동 리뷰어 지정 확인 PR: #테스트_PR번호
-- 자동 리뷰어 지정 확인 스크린샷: 스크린샷_링크
+- 자동 리뷰어 지정 확인 PR & 스크린샷: #40
 
 ### 확인 결과
 
