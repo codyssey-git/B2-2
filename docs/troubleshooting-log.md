@@ -7,7 +7,7 @@
 ### 시나리오
 
 - 종류: `git reset --hard origin/main`, `git reset --soft HEAD~1`
-- 참여자: 김예주
+- 참여자: 팀원 5
 
 ### 상황
 
