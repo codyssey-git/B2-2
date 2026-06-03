@@ -132,3 +132,5 @@ git stash pop
 * 새로 생성된 untracked 파일까지 함께 저장하려면 `git stash -u`를 사용해야 합니다.
 * `git stash pop` 이후 충돌이 발생할 수 있으므로 반드시 `git status`로 상태를 확인해야 합니다.
 
+
+<!-- CODEOWNERS 자동 리뷰어 지정 확인용 테스트 변경 -->
