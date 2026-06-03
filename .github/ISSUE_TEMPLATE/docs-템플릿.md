@@ -2,7 +2,7 @@
 name: docs 템플릿
 about: README, 가이드, 주석, 사용 예시 등 문서 작성/수정이 필요할 때 사용합니다.
 title: 'docs: README.md에 팀원 소개 추가'
-labels: documentation
+labels: bug, documentation
 assignees: ''
 
 ---
