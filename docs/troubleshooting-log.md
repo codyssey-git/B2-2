@@ -100,3 +100,20 @@ Changes to be committed:
 - 즉, soft reset은 커밋을 다시 만들기 위한 방법이지, 로컬 main을 원격 main과 완전히 동일하게 맞추는 방법은 아니다.
 - 현재 상황에서는 로컬 커밋을 유지할 필요가 없었고, 원격 `main`을 기준으로 로컬 `main`을 정리하는 것이 목적이었다.
 - 따라서 `git reset --hard origin/main`을 사용하는 것이 적절했다.
+
+### 주의사항
+- `git reset --hard origin/main`은 로컬 브랜치를 원격 브랜치 상태로 강제로 맞추는 명령어이다.
+- 이 과정에서 로컬에만 있던 커밋이나 아직 커밋하지 않은 변경사항이 삭제될 수 있으므로, 실행 전에 반드시 현재 상태를 확인해야 한다.
+    ```bash
+    git status
+    ```
+- 필요한 변경사항이 남아 있다면 `git reset --hard origin/main`을 실행하기 전에 `git stash`로 임시 저장하거나 백업 브랜치를 만들어야 한다.
+    ```bash
+    git stash
+    git branch backup/main-local-work
+    ```
+- `git reset --soft HEAD~1`은 마지막 커밋을 다시 작성해야 할 때 선택하고, `git reset --hard origin/main`은 로컬 브랜치를 원격 브랜치와 완전히 동일하게 맞춰야 할 때 선택한다.
+    ```
+    git reset --soft HEAD~1 : 마지막 커밋은 취소하되 변경사항을 유지해야 할 때 사용 
+    git reset --hard origin/main : 로컬 변경사항을 버리고 원격 브랜치 기준으로 초기화해야 할 때 사용
+    ```
