@@ -64,3 +64,90 @@ test: 테스트 코드 추가 또는 수정
 - 충돌 해결 후에는 `git status`로 상태를 확인하고, 수정 파일을 다시 커밋한 뒤 원격 브랜치에 push해야 한다. 
 - 문서 작업에서도 코드 작업과 마찬가지로 최신 `main`을 자주 반영하면 큰 충돌을 줄일 수 있다.
 
+---
+
+# 충돌 해결 기록
+
+팀 과제 진행 중 발생한 충돌과 해결 과정을 이곳에 기록합니다.
+
+## 충돌 기록
+
+### 참여자
+
+- 작성자: 팀원 3 (성원모)
+- 상대: 팀원 1
+
+### 상황
+
+- 작성자는 작업 브랜치 `feat:문자열 길이 함수 작성`에서 `src/text_utils.py`에 `count_words` 함수를 추가하고 있었다.
+- 상대 팀원은 같은 파일에 `truncate` 함수를 추가하는 `feat:문자열 공백 제거 유틸함수 추가` 브랜치를 먼저 `main`에 병합한 상태였다.
+- 작성자가 작업 브랜치에 최신 `main` 내용을 rebase하는 과정에서 같은 파일의 두 위치(파일 상단 docstring 영역, 파일 하단 함수 추가 영역)에 서로 다른 내용이 있어 충돌이 발생했다.
+- Git은 `feat:문자열 길이 함수작성`의 `truncate` 관련 변경 내용과 `feat:문자열 공백제거 유틸리티 함수`의 `count_words` 관련 변경 내용 중 어떤 내용을 최종 파일에 남겨야 하는지 자동으로 판단하지 못했다.
+
+### 충돌 내용
+
+```text
+<<<<<<< HEAD
+팀원1(윤대영) 추가: truncate 함수 포함
+
+사용 예시:
+from text_utils import validate_length, truncate
+
+    validate_length("hello", min_length=3)  # True
+    validate_length("hi", min_length=3)     # False
+    truncate("hello world", max_length=5)   # "hello..."
+=======
+팀원3(성원모) 추가: count_words 함수 포함
+
+사용 예시:
+from text_utils import validate_length, count_words
+
+    validate_length("hello", min_length=3)  # True
+    validate_length("hi", min_length=3)     # False
+    count_words("hello world")              # 2
+>>>>>>> fda9e6c (feat: add count_words function)
+```
+
+```text
+<<<<<<< HEAD
+def truncate(text: str, max_length: int, suffix: str = "...") -> str:
+    """
+    문자열을 지정된 길이로 자르고 suffix를 붙입니다.
+    ...
+    """
+    if len(text) <= max_length:
+        return text
+    return text[:max_length] + suffix
+=======
+def count_words(text: str) -> int:
+    """
+    문자열의 단어 수를 반환합니다.
+    ...
+    """
+    return len(text.split())
+>>>>>>> fda9e6c (feat: add count_words function)
+```
+
+### 해결 과정
+
+- 충돌 표시를 기준으로 현재 작업 브랜치의 변경 내용과 `main` 브랜치에서 들어온 변경 내용을 비교했다.
+- `HEAD`의 내용은 팀원1이 추가한 `truncate` 함수 관련 변경이고, 작업 브랜치의 내용은 팀원2가 추가한 `count_words` 함수 관련 변경이었기 때문에 두 내용 모두 필요하다고 판단했다.
+- 두 충돌 구간 모두 양쪽 내용을 직접 수동으로 병합했다. docstring에는 두 함수를 모두 언급하도록 정리하고, 함수 본문은 `truncate`와 `count_words` 모두 남겼다.
+- 수정 후 `git status`로 충돌 파일 상태를 확인했다.
+- 충돌 해결 파일을 `git add src/text_utils.py`로 스테이징한 뒤, `git rebase --continue`로 rebase를 완료했다.
+- 작업 브랜치를 원격 저장소에 다시 push한 뒤 GitHub PR 화면에서 충돌이 해결되었는지 확인했다.
+
+### 결과
+
+- `팀원1`의 `truncate` 함수와 `팀원2`의 `count_words` 함수를 모두 보존했다.
+- 파일 상단 docstring과 사용 예시가 두 함수를 모두 반영하는 내용으로 정리되었다.
+- 충돌 표시가 제거되어 파일이 정상적인 Python 코드 형식으로 정리되었다.
+- PR에서 발생한 충돌이 해결되어 이후 리뷰 및 병합을 진행할 수 있는 상태가 되었다.
+
+### 배운 점
+
+- 같은 파일의 같은 위치를 여러 브랜치에서 동시에 수정하면 Git이 자동으로 병합하지 못해 충돌이 발생할 수 있다.
+- 충돌이 발생했을 때는 한쪽 내용을 무조건 선택하기보다, 각 변경 사항의 목적을 확인한 뒤 필요한 내용을 모두 보존해야 한다.
+- 충돌 구간이 한 파일에 여러 곳에 걸쳐 있을 수 있으므로, 충돌 표시(`<<<<<<<`, `=======`, `>>>>>>>`)가 파일 전체에 남아 있지 않은지 반드시 직접 확인해야 한다.
+- 충돌 해결 후에는 `git status`로 상태를 확인하고, 수정 파일을 다시 스테이징한 뒤 `git rebase --continue`로 작업을 이어가야 한다.
+- 파일 상단 docstring이나 공통 import 예시처럼 여러 사람이 동시에 수정할 가능성이 높은 영역은 작업 전에 팀원 간 미리 조율하면 충돌을 줄일 수 있다.
