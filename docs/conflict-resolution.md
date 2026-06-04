@@ -64,3 +64,102 @@ test: 테스트 코드 추가 또는 수정
 - 충돌 해결 후에는 `git status`로 상태를 확인하고, 수정 파일을 다시 커밋한 뒤 원격 브랜치에 push해야 한다. 
 - 문서 작업에서도 코드 작업과 마찬가지로 최신 `main`을 자주 반영하면 큰 충돌을 줄일 수 있다.
 
+---
+
+## 충돌 기록 2
+
+### 참여자
+
+* 작성자: 팀원 4
+* 상대: 팀원 5
+
+### 상황
+
+* 작성자는 작업 브랜치 `feat/16`에서 `src/data_utils.py` 파일에 숫자 리스트 평균 계산 함수 `calculate_average()`를 작성하고 있었다.
+* 상대 팀원은 작업 브랜치 `feat/19`에서 같은 파일인 `src/data_utils.py`에 빈 값 검증 함수 `is_blank()`를 작성하고 있었다.
+* 두 작업 모두 `src/data_utils.py` 파일을 수정했으며, 함수 설명, 주석, 사용 예시 또는 파일 상단 설명 영역이 함께 수정되면서 같은 파일의 인접한 위치에 변경 사항이 생겼다.
+* 먼저 병합된 변경 사항이 `main` 브랜치에 반영된 뒤, 작성자의 작업 브랜치에 최신 `main` 내용을 병합하는 과정에서 같은 파일의 변경 내용을 Git이 자동으로 병합하지 못해 충돌이 발생했다.
+* Git은 평균 계산 함수 관련 변경 내용과 빈 값 검증 함수 관련 변경 내용 중 어떤 내용을 최종 파일에 남겨야 하는지 자동으로 판단하지 못했다.
+
+### 충돌 내용
+
+```text
+<<<<<<< feat/16
+"""데이터 처리를 위한 유틸 함수 모음.
+
+- calculate_average(numbers): 숫자 리스트의 평균을 계산한다.
+"""
+
+def calculate_average(numbers: list[int | float]) -> float:
+    """숫자 리스트의 평균을 반환한다."""
+    if not numbers:
+        raise ValueError("numbers must not be empty")
+
+    if not all(isinstance(number, (int, float)) for number in numbers):
+        raise TypeError("all elements in numbers must be int or float")
+
+    return sum(numbers) / len(numbers)
+=======
+"""데이터 처리를 위한 유틸 함수 모음.
+
+- is_blank(value): 값이 비어 있는지 확인한다.
+"""
+
+def is_blank(value):
+    """값이 None, 빈 문자열 또는 공백 문자열인지 확인한다."""
+    return value is None or value == "" or value == " "
+>>>>>>> main
+```
+
+### 해결 과정
+
+* 충돌 표시인 `<<<<<<<`, `=======`, `>>>>>>>`를 기준으로 현재 작업 브랜치 `feat/16`의 변경 내용과 `main` 브랜치에서 들어온 변경 내용을 비교했다.
+* `feat/16`의 변경 내용은 팀원 4가 담당한 숫자 리스트 평균 계산 함수였고, `main` 브랜치에서 들어온 변경 내용은 팀원 5가 담당한 빈 값 검증 함수였기 때문에 두 함수 모두 필요한 기능이라고 판단했다.
+* 한쪽 변경 사항만 선택하지 않고, `calculate_average()`와 `is_blank()` 함수가 모두 남도록 파일을 직접 수정했다.
+* 파일 상단 docstring도 두 함수의 설명이 모두 포함되도록 정리했다.
+* 충돌 마커가 남아 있지 않은지 확인한 뒤, 최종 파일이 정상적인 Python 문법을 유지하는지 검토했다.
+* 수정 후 `git status`로 충돌 파일 상태를 확인했다.
+* 충돌 해결이 완료된 `src/data_utils.py` 파일을 `git add`로 스테이징했다.
+* 충돌 해결 커밋을 작성한 뒤 작업 브랜치를 원격 저장소에 push했다.
+* GitHub PR 화면에서 충돌 표시가 사라졌는지 확인했다.
+
+### 최종 반영 내용
+
+```python
+"""데이터 처리를 위한 유틸 함수 모음.
+
+- calculate_average(numbers): 숫자 리스트의 평균을 계산한다.
+- is_blank(value): 값이 비어 있는지 확인한다.
+"""
+
+def calculate_average(numbers: list[int | float]) -> float:
+    """숫자 리스트의 평균을 반환한다."""
+    if not numbers:
+        raise ValueError("numbers must not be empty")
+
+    if not all(isinstance(number, (int, float)) for number in numbers):
+        raise TypeError("all elements in numbers must be int or float")
+
+    return sum(numbers) / len(numbers)
+
+
+def is_blank(value):
+    """값이 None, 빈 문자열 또는 공백 문자열인지 확인한다."""
+    return value is None or value == "" or value == " "
+```
+
+### 결과
+
+* 팀원 4가 작성한 숫자 리스트 평균 계산 함수 `calculate_average()`와 팀원 5가 작성한 빈 값 검증 함수 `is_blank()`를 모두 보존했다.
+* 충돌 표시가 제거되어 `src/data_utils.py` 파일이 정상적인 Python 코드 형식으로 정리되었다.
+* 같은 파일을 여러 팀원이 수정할 때 발생할 수 있는 코드 충돌을 확인하고 해결했다.
+* 충돌 해결 후 작업 브랜치를 다시 원격 저장소에 push하여 PR에서 리뷰와 병합을 진행할 수 있는 상태로 만들었다.
+
+### 배운 점
+
+* 같은 파일을 수정하더라도 함수 위치, 파일 상단 설명, 주석, 사용 예시 영역이 겹치면 충돌이 발생할 수 있다.
+* 충돌이 발생했을 때는 단순히 한쪽 변경 사항만 선택하기보다 각 변경 사항의 목적과 담당 범위를 먼저 확인해야 한다.
+* 기능이 서로 독립적이라면 두 변경 사항을 모두 보존하는 방향으로 해결하는 것이 적절하다.
+* 충돌 해결 후에는 충돌 마커가 완전히 제거되었는지 반드시 확인해야 한다.
+* 문법 오류가 없는지 확인하고, `git status`로 상태를 점검한 뒤 다시 커밋해야 한다.
+* 같은 파일을 여러 팀원이 함께 수정할 때는 작업 전에 함수 배치 순서나 공통 설명 영역 수정 방식을 미리 정하면 충돌을 줄일 수 있다.

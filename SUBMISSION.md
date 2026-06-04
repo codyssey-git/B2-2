@@ -4,7 +4,7 @@
 
 ## 저장소
 
-- GitHub 저장소:
+- GitHub 저장소: codyssey-git/B2-2
 
 ## 팀원별 제출 링크
 
@@ -13,15 +13,15 @@
 | 팀원 1 |  |  |  |  |
 | 팀원 2 |  |  |  |  |
 | 팀원 3 |  |  |  |  |
-| 팀원 4 |  |  |  |  |
+| 팀원 4 | [#8 docs: 코드 리뷰 규칙 작성](https://github.com/codyssey-git/B2-2/issues/8)<br>[#24 feat: 숫자 리스트 평균 계산 함수 작성](https://github.com/codyssey-git/B2-2/issues/24)<br>[#31 docs: git commit --ammend 트러블슈팅 시나리오](https://github.com/codyssey-git/B2-2/issues/31) | [#12 docs: 코드 리뷰 규칙 작성](https://github.com/codyssey-git/B2-2/pull/12)<br>[#22 feat: 숫자 리스트 평균 계산 함수 추가](https://github.com/codyssey-git/B2-2/pull/22)<br>[#37 docs: git amend 트러블슈팅 기록 추가](https://github.com/codyssey-git/B2-2/pull/37) | [#12 리뷰 포함 PR](https://github.com/codyssey-git/B2-2/pull/12)<br>[#22 리뷰 포함 PR](https://github.com/codyssey-git/B2-2/pull/22)<br>[#37 리뷰 포함 PR](https://github.com/codyssey-git/B2-2/pull/37) | `CONTRIBUTING.md`에 코드 리뷰 규칙 작성<br>숫자 리스트 평균 계산 함수 `calculate_average` 작성<br>트러블슈팅 문서에 `git commit --amend` 트러블슈팅 작성<br>충돌 해결 기록에 `src/data_utils.py` 코드 충돌 해결 과정 작성 |
 | 팀원 5 | [#3 docs: 충돌 대응 흐름 파일 작성](https://github.com/codyssey-git/B2-2/issues/3)<br>[#19 feat: 빈 값 검증 함수 작성](https://github.com/codyssey-git/B2-2/issues/19)<br>[#26 docs: git reset 트러블슈팅 문서 작성](https://github.com/codyssey-git/B2-2/issues/26) | [#11 docs: 충돌 대응 흐름 작성](https://github.com/codyssey-git/B2-2/pull/11)<br>[#23 feat: 빈 값 검증 함수 추가](https://github.com/codyssey-git/B2-2/pull/23)<br>[#36 docs: reset soft 트러블슈팅 추가](https://github.com/codyssey-git/B2-2/pull/36) | [#11 리뷰 포함 PR](https://github.com/codyssey-git/B2-2/pull/11)<br>[#23 리뷰 포함 PR](https://github.com/codyssey-git/B2-2/pull/23)<br>[#36 리뷰 포함 PR](https://github.com/codyssey-git/B2-2/pull/36) | `CONTRIBUTING.md`에 충돌 대응 흐름 작성<br>빈 값 검증 함수 `is_blank` 작성<br>트러블슈팅 문서에 `git reset` 트러블 슈팅 작성 |
 
 ## 문서 링크
 
-- 협업 가이드:
-- 충돌 해결 기록:
-- 트러블슈팅 기록:
-- Git 히스토리 증빙:
+- 협업 가이드: https://github.com/codyssey-git/B2-2/blob/main/docs/CONTRIBUTING.md
+- 충돌 해결 기록: https://github.com/codyssey-git/B2-2/blob/main/docs/conflict-resolution.md
+- 트러블슈팅 기록: https://github.com/codyssey-git/B2-2/blob/main/docs/troubleshooting-log.md
+- Git 히스토리 증빙: https://github.com/codyssey-git/B2-2/commits/main/
 
 ## 보너스: CODEOWNERS / 리뷰어 자동화
 
