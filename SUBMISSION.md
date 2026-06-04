@@ -8,12 +8,13 @@
 
 ## 팀원별 제출 링크
 
+
 | 팀원 | Issue | PR | 리뷰 | 비고 |
 | --- | --- | --- | --- | --- |
-| 팀원 1 |  |  |  |  |
-| 팀원 2 |  |  |  |  |
-| 팀원 3 |  |  |  |  |
-| 팀원 4 |  |  |  |  |
+| 팀원 1 | | | | |
+| 팀원 2 | | | | |
+| 팀원 3 | [#7 docs: PR 작성 규칙 작성](https://github.com/codyssey-git/B2-2/issues/7)<br>[#15 feat: 문자열 길이 검증 함수 작성](https://github.com/codyssey-git/B2-2/issues/15)<br>[#28 docs: git revert 트러블 슈팅](https://github.com/codyssey-git/B2-2/issues/28) | [#13 docs: PR 작성 규칙 작성](https://github.com/codyssey-git/B2-2/pull/13)<br>[#18 feat: 문자열 길이 검증 함수 추가](https://github.com/codyssey-git/B2-2/pull/18)<br>[#35 docs: revert 트러블슈팅 추가](https://github.com/codyssey-git/B2-2/pull/35) | [#13 리뷰 포함 PR](https://github.com/codyssey-git/B2-2/pull/13)<br>[#18 리뷰 포함 PR](https://github.com/codyssey-git/B2-2/pull/18)<br>[#35 리뷰 포함 PR](https://github.com/codyssey-git/B2-2/pull/35) | `CONTRIBUTING.md`에 PR 작성 규칙 작성<br>문자열 길이 검증 함수 `validate_length` 작성<br>트러블슈팅 문서에 `git revert` 트러블슈팅 작성 |
+| 팀원 4 | | | | |
 | 팀원 5 | [#3 docs: 충돌 대응 흐름 파일 작성](https://github.com/codyssey-git/B2-2/issues/3)<br>[#19 feat: 빈 값 검증 함수 작성](https://github.com/codyssey-git/B2-2/issues/19)<br>[#26 docs: git reset 트러블슈팅 문서 작성](https://github.com/codyssey-git/B2-2/issues/26) | [#11 docs: 충돌 대응 흐름 작성](https://github.com/codyssey-git/B2-2/pull/11)<br>[#23 feat: 빈 값 검증 함수 추가](https://github.com/codyssey-git/B2-2/pull/23)<br>[#36 docs: reset soft 트러블슈팅 추가](https://github.com/codyssey-git/B2-2/pull/36) | [#11 리뷰 포함 PR](https://github.com/codyssey-git/B2-2/pull/11)<br>[#23 리뷰 포함 PR](https://github.com/codyssey-git/B2-2/pull/23)<br>[#36 리뷰 포함 PR](https://github.com/codyssey-git/B2-2/pull/36) | `CONTRIBUTING.md`에 충돌 대응 흐름 작성<br>빈 값 검증 함수 `is_blank` 작성<br>트러블슈팅 문서에 `git reset` 트러블 슈팅 작성 |
 
 ## 문서 링크
