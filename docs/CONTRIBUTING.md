@@ -195,11 +195,29 @@ docs/CONTRIBUTING.md의 코드 리뷰 규칙이 명확합니다.
 10. GitHub PR 화면에서 충돌이 해결되었는지 확인한다.
 11. 충돌 해결 후에도 변경 내용이 의도한 대로 동작하는지 확인한 뒤 merge한다.
 12. 충돌 해결이 어렵거나 다른 팀원의 작업을 수정해야 하는 경우, 해당 팀원과 함께 확인한 뒤 처리한다.
-    우리 팀은 Git 히스토리에서 각 변경 사항의 목적과 대상을 쉽게 파악할 수 있도록 일관된 커밋 메시지 규칙을 사용한다.
+
+
+## 충돌 기록 담당자와 위치 명시
+충돌 기록은 충돌을 직접 해결한 팀원이 작성하였다. 
+
+충돌 해결 내용은 `docs/conflict-resolution.md`에 기록했으며, 해당 문서에서 충돌 발생 상황, 충돌 내용, 해결 과정, 결과, 배운점을 정리하였다.
+
+이를 통해 누가 충돌을 해결했는지, 어떤 방식으로 충돌을 처리했는지, 충돌 기록이 어디에 남아 있는지 확인할 수 있다.
+
+| 작성자 | 기록 위치 |
+| --- | --- |
+| 팀원 1 | [`docs/conflict-resolution.md`](conflict-resolution.md) |
+| 팀원 2 | [`docs/conflict-resolution.md`](conflict-resolution.md) |
+| 팀원 3 | [`docs/conflict-resolution.md`](conflict-resolution.md) |
+| 팀원 4 | [`docs/conflict-resolution.md`](conflict-resolution.md) |
+| 팀원 5 | [`docs/conflict-resolution.md`](conflict-resolution.md) |
+
 
 ## 커밋 메시지 컨벤션
 
 ### 기본 형식
+
+우리 팀은 Git 히스토리에서 각 변경 사항의 목적과 대상을 쉽게 파악할 수 있도록 일관된 커밋 메시지 규칙을 사용한다.
 
 ```text
 type: 작업 내용 요약
