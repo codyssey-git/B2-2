@@ -14,6 +14,15 @@
 
 ```text
 .
+├── .github/
+│   ├── CODEOWNERS                # 파일/폴더별 책임 리뷰어 지정
+│   ├── ISSUE_TEMPLATE/           # Issue 템플릿
+│   │   ├── bug_report.md
+│   │   ├── docs-템플릿.md
+│   │   ├── feat-템플릿.md
+│   │   └── refactor-템플릿.md
+│   └── PULL_REQUEST_TEMPLATE.md  # PR 본문 템플릿
+├── .gitignore
 ├── README.md                      # 프로젝트 개요, 실행환경, 구조, 수행 항목 정리
 ├── SUBMISSION.md                  # 팀원별 Issue, PR, 문서, 증빙 링크 제출 인덱스
 ├── docs/
@@ -22,6 +31,10 @@
 │   ├── rebase-history.md          # rebase 히스토리 정리 기록
 │   └── troubleshooting-log.md     # Git 트러블슈팅 시나리오 수행 기록
 ├── git_history.md                 # git log --oneline --graph --all 증빙
+├── images/
+│   ├── git_main_rule1.png         # main 브랜치 보호 규칙 증빙 이미지
+│   ├── git_main_rule2.png         # main 브랜치 보호 규칙 증빙 이미지
+│   └── trouble-shooting/          # Git 트러블슈팅 증빙 이미지
 └── src/                           # 팀별 유틸 함수와 사용 예시
     ├── data_utils.py
     └── text_utils.py
