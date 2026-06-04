@@ -18,13 +18,11 @@
 
 ### 충돌 내용
 
-```text
-<<<<<<< docs/3
+````text
 ## 충돌 대응 흐름
 - PR에서 충돌이 발생했거나, 작업 브랜치에 최신 `main`을 반영하는 과정에서 충돌이 발생하면 PR 작성자가 우선 해결한다.
 - 충돌 해결 전, 현재 작업 내용을 커밋하거나 저장한다.
 - 로컬 `main` 브랜치를 최신 상태로 만든 뒤, 작업 브랜치에 병합한다.
-=======
 우리 팀은 Git 히스토리에서 각 변경 사항의 목적과 대상을 쉽게 파악할 수 있도록 일관된 커밋 메시지 규칙을 사용한다.
 
 ### 기본 형식
@@ -39,29 +37,29 @@ docs: 문서 작성 또는 수정
 refactor: 기능 변경 없이 코드 또는 문서 구조 개선
 chore: 설정, 초기 구조, 기타 작업
 test: 테스트 코드 추가 또는 수정
-```
+````
 
 ### 해결 과정
 
-- 충돌 표시를 기준으로 현재 작업 브랜치 `docs/3`의 변경 내용과 `main` 브랜치에서 들어온 변경 내용을 비교했다. 
-- `docs/3`의 내용은 충돌 대응 흐름 문서이고, `main`의 내용은 커밋 메시지 규칙 문서였기 때문에 두 내용 모두 필요한 문서라고 판단했다. 
-- VS Code의 `Accept both changes`를 사용하여 양쪽 변경 사항을 모두 반영했다. 
-- 수정 후 `git status`로 충돌 파일 상태를 확인했다. 
-- 충돌 해결 파일을 `git add .`로 스테이징한 뒤, 충돌 해결 커밋을 작성했다. 
+- 충돌 표시를 기준으로 현재 작업 브랜치 `docs/3`의 변경 내용과 `main` 브랜치에서 들어온 변경 내용을 비교했다.
+- `docs/3`의 내용은 충돌 대응 흐름 문서이고, `main`의 내용은 커밋 메시지 규칙 문서였기 때문에 두 내용 모두 필요한 문서라고 판단했다.
+- VS Code의 `Accept both changes`를 사용하여 양쪽 변경 사항을 모두 반영했다.
+- 수정 후 `git status`로 충돌 파일 상태를 확인했다.
+- 충돌 해결 파일을 `git add .`로 스테이징한 뒤, 충돌 해결 커밋을 작성했다.
 - 작업 브랜치를 원격 저장소에 다시 push한 뒤 GitHub PR 화면에서 충돌이 해결되었는지 확인했다.
 
 ### 결과
 
-- `main` 브랜치의 커밋 메시지 규칙 문서와 `docs/3` 브랜치의 충돌 대응 흐름 문서를 모두 보존했다. 
-- 충돌 표시가 제거되어 문서가 정상적인 Markdown 형식으로 정리되었다. 
+- `main` 브랜치의 커밋 메시지 규칙 문서와 `docs/3` 브랜치의 충돌 대응 흐름 문서를 모두 보존했다.
+- 충돌 표시가 제거되어 문서가 정상적인 Markdown 형식으로 정리되었다.
 - PR에서 발생한 충돌이 해결되어 이후 리뷰 및 병합을 진행할 수 있는 상태가 되었다.
 
 ### 배운 점
 
-- 같은 파일의 같은 위치를 여러 브랜치에서 동시에 수정하면 Git이 자동으로 병합하지 못해 충돌이 발생할 수 있다. 
-- 충돌이 발생했을 때는 한쪽 내용을 무조건 선택하기보다, 각 변경 사항의 목적을 확인한 뒤 필요한 내용을 모두 보존해야 한다. 
-- `Accept both changes`를 사용하더라도 충돌 표시가 남아 있지 않은지 반드시 직접 확인해야 한다. 
-- 충돌 해결 후에는 `git status`로 상태를 확인하고, 수정 파일을 다시 커밋한 뒤 원격 브랜치에 push해야 한다. 
+- 같은 파일의 같은 위치를 여러 브랜치에서 동시에 수정하면 Git이 자동으로 병합하지 못해 충돌이 발생할 수 있다.
+- 충돌이 발생했을 때는 한쪽 내용을 무조건 선택하기보다, 각 변경 사항의 목적을 확인한 뒤 필요한 내용을 모두 보존해야 한다.
+- `Accept both changes`를 사용하더라도 충돌 표시가 남아 있지 않은지 반드시 직접 확인해야 한다.
+- 충돌 해결 후에는 `git status`로 상태를 확인하고, 수정 파일을 다시 커밋한 뒤 원격 브랜치에 push해야 한다.
 - 문서 작업에서도 코드 작업과 마찬가지로 최신 `main`을 자주 반영하면 큰 충돌을 줄일 수 있다.
 
 ---
@@ -87,7 +85,6 @@ test: 테스트 코드 추가 또는 수정
 ### 충돌 내용
 
 ```text
-<<<<<<< HEAD
 팀원1(윤대영) 추가: truncate 함수 포함
 
 사용 예시:
@@ -96,7 +93,6 @@ from text_utils import validate_length, truncate
     validate_length("hello", min_length=3)  # True
     validate_length("hi", min_length=3)     # False
     truncate("hello world", max_length=5)   # "hello..."
-=======
 팀원3(성원모) 추가: count_words 함수 포함
 
 사용 예시:
@@ -105,11 +101,9 @@ from text_utils import validate_length, count_words
     validate_length("hello", min_length=3)  # True
     validate_length("hi", min_length=3)     # False
     count_words("hello world")              # 2
->>>>>>> fda9e6c (feat: add count_words function)
 ```
 
 ```text
-<<<<<<< HEAD
 def truncate(text: str, max_length: int, suffix: str = "...") -> str:
     """
     문자열을 지정된 길이로 자르고 suffix를 붙입니다.
@@ -118,14 +112,12 @@ def truncate(text: str, max_length: int, suffix: str = "...") -> str:
     if len(text) <= max_length:
         return text
     return text[:max_length] + suffix
-=======
 def count_words(text: str) -> int:
     """
     문자열의 단어 수를 반환합니다.
     ...
     """
     return len(text.split())
->>>>>>> fda9e6c (feat: add count_words function)
 ```
 
 ### 해결 과정
