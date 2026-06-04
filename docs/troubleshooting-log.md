@@ -50,44 +50,65 @@ git push --force-with-lease origin docs/31
 
 ---
 
+## 시나리오 기록
+
 ### 시나리오: git revert
 
 * 종류: `git revert`
-* 참여자: 팀원 3
+* 참여자: 팀원 3 (성원모)
 
 ### 상황
 
-* `validate_length()` 함수에 음수 길이 검증 로직을 추가하는 과정에서 잘못된 조건 처리가 포함된 커밋을 생성했습니다.
-* 해당 커밋이 원격 저장소에 push된 이후 오류를 발견했습니다.
-* 이미 공유된 커밋이므로 `git reset` 대신 `git revert`를 사용하여 변경 사항을 취소했습니다.
+* `validate_length()` 함수에 음수 길이 검증 로직을 추가하는 과정에서 잘못된 조건 처리가 포함된 커밋을 생성하였다.
+* 해당 커밋이 원격 저장소에 push된 이후 오류를 발견하였다.
+* 이미 공유된 커밋이므로 `git reset` 대신 `git revert`를 사용하여 변경 사항을 취소하였다.
 
+## 실수로 커밋한 코드
+```python
+if min_length < 0:
+    return False
+```
+
+## 정상 코드 (수정본)
+```python
+if min_length < 0:
+    raise ValueError("min_length는 0 이상이어야 합니다.")
+```
 ### 수행 명령 또는 절차
-```
-git log --oneline
-
-git revert <commit-hash>
-
-git log --oneline
-```
-
-예시:
 
 ```bash
-git revert a1b2c3d
+git log --oneline
+9cfeacf (origin/main, origin/docs/26, origin/HEAD,
+14ab263 (origin/feat/19) Merge branch
+'main' into
+main) Merge pull request #23 from
+codyssey-git/feat/19
+feat/19
+05db6e7 Merge pull request #18 from codyssey-git/feat/15
+2697723 (origin/feat/15, feat/15) Merge branch
+'main' into feat/15
+
+git revert 9cfeacf
+
+git log --oneline
+
+vnkers948441@c6r6s5 B2-2 % git log --oneline
+Idf150c Revert "Merge pull request #23 from codyssey-git/feat/19'
+434dd75 refactor: 문자열 업데이트
+9cfeacf (origin/main, origin/docs/26, origin/HEAD, main) Merge pull request #23 from codyssey-git/feat/19
 ```
 
 ### 결과
 
-* 잘못된 변경 사항을 취소하는 새로운 커밋이 생성되었습니다.
-* 기존 커밋 이력은 유지되었습니다.
-* 협업 중인 저장소의 히스토리를 안전하게 보존하면서 문제를 해결할 수 있었습니다.
+* 잘못된 변경 사항을 취소하는 새로운 커밋이 생성되었다.
+* 기존 커밋 이력은 유지되었다.
+* 협업 중인 저장소의 히스토리를 안전하게 보존하면서 문제를 해결할 수 있었다.
 
 ### 배운 점
 
-* 이미 원격 저장소에 공유된 커밋은 `git reset`보다 `git revert`를 사용하는 것이 안전합니다.
-* `git revert`는 기존 커밋을 삭제하지 않고 취소 이력을 남기므로 협업 환경에 적합합니다.
-* 커밋을 되돌려야 하는 상황에서도 Git 히스토리를 보존할 수 있습니다.
-
+* 이미 원격 저장소에 공유된 커밋은 `git reset`보다 `git revert`를 사용하는 것이 안전하다.
+* `git revert`는 기존 커밋을 삭제하지 않고 취소 이력을 남기므로 협업 환경에 적합하다.
+* 커밋을 되돌려야 하는 상황에서도 Git 히스토리를 보존할 수 있다.
 ----
 
 ### 시나리오: git revert 1 - 윤대영

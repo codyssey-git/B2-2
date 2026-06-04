@@ -2,7 +2,7 @@
 
 ## 1. 담당자 및 대상 브랜치
 
-- **담당자**: myy-dev
+- **담당자**: 팀원 1
 - **대상 브랜치**: `refactor/32`
 
 ## 2. 정리 전 커밋 로그
@@ -65,5 +65,5 @@
 
 ## 6. 관련 Issue / PR 링크
 
-- 관련 Issue: #32
-- 관련 PR: #PR번호
+- 관련 Issue: [#32 refactor: rebase 활용 git history 정리](https://github.com/codyssey-git/B2-2/issues/32)
+- 관련 PR: [#39 docs: git rebase 사용 및 관련 문서 정리](https://github.com/codyssey-git/B2-2/pull/39)
