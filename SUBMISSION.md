@@ -25,6 +25,7 @@
 - Git rule: [docs/CONTRIBUTING.md](./docs/CONTRIBUTING.md)
 - Git rule 이미지: [images/git_main_rule1.png](./images/git_main_rule1.png), [images/git_main_rule2.png](./images/git_main_rule2.png)
 
+
 ## 보너스 과제
 
 - 히스토리 정리: [docs/rebase-history.md](./docs/rebase-history.md)
